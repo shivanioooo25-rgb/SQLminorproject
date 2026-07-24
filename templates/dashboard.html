@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Attack Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>SQL Injection Detection Dashboard</h1>
+
+    <!-- Dashboard Cards -->
+    <div class="dashboard">
+
+        <div class="card">
+            <h2>Total Attacks</h2>
+            <p>{{ attack_count }}</p>
+        </div>
+
+        <div class="card">
+            <h2>Current Risk</h2>
+            <p>{{ risk }}</p>
+        </div>
+
+        <div class="card">
+            <h2>Status</h2>
+            <p>{{ status }}</p>
+        </div>
+
+    </div>
+
+    <!-- Colored Alert -->
+    <div class="alert {{ color }}">
+        {{ alert_message }}
+    </div>
+
+    <br>
+
+    <h2>Attack Logs</h2>
+
+    {% if logs %}
+
+    <table>
+
+        <tr>
+            <th>No.</th>
+            <th>Attack Log</th>
+        </tr>
+
+        {% for log in logs %}
+
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ log }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+
+    <p>No attacks detected yet.</p>
+
+    {% endif %}
+
+    <br><br>
+
+    <a href="/">⬅️ Back to Home</a>
+
+</div>
+
+</body>
+
+</html>
