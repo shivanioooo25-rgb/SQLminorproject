@@ -1,0 +1,2 @@
+# SQLminorproject
+minor project
